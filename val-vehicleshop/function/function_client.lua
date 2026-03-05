@@ -10,8 +10,9 @@ function DisableKeyInShop()
 	CreateThread(function()
 		while ValDev.IsInShopMenu do
 			Wait(1)
-			DisableControlAction(0, 75,  true) 
+			DisableControlAction(0, 75,  true)
 			DisableControlAction(27, 75, true)
+			DisplayRadar(false) -- กัน minimap โผล่ตอนนั่งรถพรีวิวในร้าน
 		end
 	end)
 end
