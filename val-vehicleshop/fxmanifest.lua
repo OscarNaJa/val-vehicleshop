@@ -7,6 +7,7 @@ games {'gta5' }
 
 client_scripts {
 	'config.lua',
+	'config-notify.lua',
 	'core/client.lua',
 	'core/utils.lua',
 	'function/function_client.lua',

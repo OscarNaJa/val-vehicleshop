@@ -25,6 +25,48 @@ Citizen.CreateThread(function()
 end)
 
 
+
+local function Notify(msg, level)
+	level = level or 'info'
+	if ConfigNotify and ConfigNotify.Provider == 'mythic' then
+		local t = (ConfigNotify.Types and ConfigNotify.Types[level]) or level
+		pcall(function()
+			exports[ConfigNotify.MythicResource or 'mythic_notify']:DoHudText(t, msg)
+		end)
+	elseif ESX and ESX.ShowNotification then
+		ESX.ShowNotification(msg)
+	else
+		print(('[val-vehicleshop] %s'):format(msg))
+	end
+end
+
+local function ExitShopUI()
+	if not ValDev.IsInShopMenu then return end
+	ExecuteCommand('hud')
+	ExecuteCommand('closeminimap')
+	ExecuteCommand('closehudspeed')
+	DeleteShopInsideVehicles()
+	local playerPed = PlayerPedId()
+	FreezeEntityPosition(playerPed, false)
+	SetEntityVisible(playerPed, true)
+	local config = Config['ZONE_SHOP'][ValDev.indexshop]
+	pcall(function()
+		exports["Val_report"]:PlayerBypassTPM()
+	end)
+	SetEntityCoords(playerPed, config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z)
+	SetNuiFocus(false, false)
+	SetNuiFocusKeepInput(false)
+	SendNUIMessage({ closeui = true })
+	ValDev.IsInShopMenu = false
+	ValDev.openfocus = false
+	if cam then
+		DestroyCam(cam, false)
+		RenderScriptCams(false, false, 0, true, true)
+		cam = nil
+		num = 0
+	end
+end
+
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
 	ESX.PlayerData = xPlayer
@@ -311,7 +353,7 @@ RegisterNUICallback('buycar', function(data)
 				ExecuteCommand('hud')
 				ExecuteCommand('closeminimap')
 				ExecuteCommand('closehudspeed')
-				exports['mythic_notify']:DoHudText('infoerror', 'ซื้อรถสำเร็จ')
+				Notify('ซื้อรถสำเร็จ', 'success')
 			end)
 			FreezeEntityPosition(playerPed, false)
 			SetEntityVisible(playerPed, true)
@@ -322,7 +364,12 @@ RegisterNUICallback('buycar', function(data)
 				num = 0
 			end
 		else
-			exports['mythic_notify']:DoHudText('infoerror', 'คุณไม่มีเงิน')
+			if data.payment == 'bank' then
+				Notify('เงินในธนาคารไม่พอ ระบบปิดหน้าร้านให้แล้ว', 'error')
+				ExitShopUI()
+			else
+				Notify('คุณไม่มีเงิน', 'error')
+			end
 		end
 	end,Config["vehicles"][data.carname].model,Config["vehicles"][data.carname].price,data.payment)
 end)
@@ -372,32 +419,7 @@ RegisterNUICallback('choosecolor2', function(data)
 end)
 
 RegisterNUICallback('quit', function()
-	if ValDev.IsInShopMenu then
-		ExecuteCommand('hud')
-		ExecuteCommand('closeminimap')
-		ExecuteCommand('closehudspeed')
-		local playerPed   = PlayerPedId()
-		DeleteShopInsideVehicles()
-		local playerPed = PlayerPedId()
-		FreezeEntityPosition(playerPed, false)
-		SetEntityVisible(playerPed, true)
-		local config = Config['ZONE_SHOP'][ValDev.indexshop]
-		pcall(function()
-        exports["Val_report"]:PlayerBypassTPM()
-    end)
-		SetEntityCoords(playerPed, config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z)
-		SetNuiFocus(false, false)
-		SetNuiFocusKeepInput(false)
-		ValDev.IsInShopMenu = false
-		ValDev.openfocus = false
-		if cam then
-			DestroyCam(cam, false)
-			RenderScriptCams(false, false, 0, true, true)
-			cam = nil
-			num = 0
-		end
-
-	end
+	ExitShopUI()
 end)
 
 function CheckInShopCar()
