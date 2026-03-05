@@ -1,0 +1,1258 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+    margin: 0;
+
+}
+
+* {
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.box-category-carname {
+    position: absolute;
+    left: 52px;
+    bottom: 32px;
+    display: flex;
+    width: 94.58vw;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+}
+
+.box-category-carname .head {
+    position: relative;
+    display: flex;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.box-category-carname .head .head2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.box-category-carname .head .head2 .icon {
+    position: relative;
+    /* width: 50px;
+    height: 50px; */
+    width: 2.604vw;
+    height: 4.630vh;
+}
+
+.box-category-carname .head .head2 .icon img {
+    width: 2.604vw;
+    height: 4.630vh;
+}
+
+
+.box-category-carname .head .head2 .boxtext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box-category-carname .head .head2 .boxtext .text1 {
+    align-self: stretch;
+    color: #1EC3FE;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 17px; */
+    font-size: clamp(7px, 0.729vw, 17px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-category-carname .head .head2 .boxtext .text2 {
+    align-self: stretch;
+    color: rgba(255, 255, 255, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 10px; */
+    font-size: clamp(5px, 0.52vw, 10px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.box-category-carname .head .lineright {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.104vw;
+    height: 2.222vh;
+    position: absolute;
+    transform: translateY(-50%);
+    right: -1px;
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-category-carname .head .lineleft {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.104vw;
+    height: 2.222vh;
+    position: absolute;
+    left: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+
+.box-category-carname .list-category {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.list-category .category {
+    display: flex;
+    /* width: 108px; */
+    width: 5.625vw;
+    padding: 6px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 8px;
+    background: rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.list-category .category .inner {
+    position: relative;
+    display: flex;
+    padding: 8px 12px;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(21, 21, 21, 0.90);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.list-category .category .inner:hover {
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 100%), rgba(21, 21, 21, 0.90);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.list-category .category .inner.active {
+    border-radius: 4px;
+    border: 1px solid #1EC3FE;
+    background: linear-gradient(0deg, rgba(30, 195, 254, 0.08) 0%, rgba(30, 195, 254, 0.08) 100%), rgba(21, 21, 21, 0.90);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.list-category .category .inner .lineleft {
+    /* width: 2px;
+    height: 16px; */
+    width: 0.104vw;
+    height: 1.481vh;
+    position: absolute;
+    left: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #686868;
+}
+
+.list-category .category .inner .lineleft.active {
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.list-category .category .inner .boxtext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1 0 0;
+}
+
+.list-category .category .inner .boxtext .text {
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.list-category .category .inner .boxtext .text.active {
+    overflow: hidden;
+    color: #1EC3FE;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-category-carname .list-carname {
+    display: flex;
+    /* width: 1816px; */
+    width: 94.583vw;
+    align-items: center;
+    gap: 8px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.box-category-carname .list-carname::-webkit-scrollbar {
+    display: none;
+}
+
+.list-carname .btn-scroll-left {
+    display: flex;
+    /* width: 24px; */
+    width: 1.25vw;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: stretch;
+    border-radius: 4px;
+    opacity: 0.8;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.list-carname .btn-scroll-left:hover {
+    opacity: 1.0;
+}
+
+.boxscroll-listcarname {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 89.5vw;
+    z-index: 10;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.boxscroll-listcarname::-webkit-scrollbar {
+    display: none;
+}
+
+.boxscroll-listcarname .carname {
+    display: flex;
+    padding: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 12px;
+    background: rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.boxscroll-listcarname .carname .inner {
+    position: relative;
+    display: flex;
+    /* width: 200px; */
+    width: 10.416vw;
+    padding: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.boxscroll-listcarname .carname .inner:hover {
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(21, 21, 21, 0.60) 0%, rgba(21, 21, 21, 0.60) 100%), rgba(255, 255, 255, 0.08);
+}
+
+.boxscroll-listcarname .carname .inner.active {
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(21, 21, 21, 0.60) 0%, rgba(21, 21, 21, 0.60) 100%), linear-gradient(0deg, rgba(30, 195, 254, 0.08) 0%, rgba(30, 195, 254, 0.08) 100%), rgba(255, 255, 255, 0.08);
+}
+
+.boxscroll-listcarname .carname .inner .boxtext {
+    display: flex;
+    /* height: 33px; */
+    height: 3.4627492130115427vh;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.boxscroll-listcarname .carname .inner .boxtext .text1 {
+    align-self: stretch;
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.50);
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 10px; */
+    font-size: clamp(5px, 0.52vw, 10px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.boxscroll-listcarname .carname .inner .boxtext .text2 {
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.boxscroll-listcarname .carname .inner .line1 {
+    /* height: 1px; */
+    height: 0.1049317943336831vh;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.boxscroll-listcarname .carname .inner .line2 {
+    /* width: 60px; */
+    /* height: 1px; */
+    width: 3.125vw;
+    height: 0.1049317943336831vh;
+    top: -0px;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.20);
+}
+
+.boxscroll-listcarname .carname .inner .line2.active {
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.boxscroll-listcarname .carname .inner .textprice {
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 15px; */
+    font-size: clamp(7.5px, 0.781vw, 15px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.boxscroll-listcarname .carname .inner .textprice.active {
+    align-self: stretch;
+    overflow: hidden;
+    color: #1EC3FE;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 15px; */
+    font-size: clamp(7.5px, 0.781vw, 15px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+
+/* information */
+
+.box-information {
+    position: absolute;
+    right: 52px;
+
+    transform: translateY(-50%);
+    top: 50%;
+    display: flex;
+    /* width: 356px; */
+    width: 18.541666666666668vw;
+    padding: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 12px;
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.box-information .head {
+    position: relative;
+    display: flex;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.box-information .head .head2 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.box-information .head .head2 .icon {
+    position: relative;
+    /* width: 50px;
+    height: 50px; */
+    width: 2.6041666666666665vw;
+    height: 5.246589716684155vh;
+}
+
+.box-information .head .head2 .icon img {
+    width: 2.6041666666666665vw;
+    height: 5.246589716684155vh;
+}
+
+.box-information .head .head2 .boxtext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box-information .head .head2 .boxtext .text1 {
+    align-self: stretch;
+    color: #1EC3FE;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 17px; */
+    font-size: clamp(8.5px, 0.885vw, 17px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .head .head2 .boxtext .text2 {
+    align-self: stretch;
+    color: rgba(255, 255, 255, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 10px; */
+    font-size: clamp(5px, 0.520vw, 10px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.box-information .head .lineright {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.10416666666666667vw;
+    height: 2.5183630640083945vh;
+    position: absolute;
+    right: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .head .lineleft {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.10416666666666667vw;
+    height: 2.5183630640083945vh;
+    position: absolute;
+    left: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .vehicle-info {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.box-information .vehicle-info .boxtext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.box-information .vehicle-info .boxtext .text {
+    align-self: stretch;
+    overflow: hidden;
+    color: #1EC3FE;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 24px; */
+    font-size: clamp(12px, 1.25vw, 24px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .boxtext .boxtext2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.box-information .vehicle-info .boxtext .boxtext2 .text1 {
+    flex: 1 0 0;
+    overflow: hidden;
+    color: #FFF;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 16px; */
+    font-size: clamp(8px, 0.833vw, 16px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .boxtext .boxtext2 .text2 {
+    overflow: hidden;
+    color: rgba(255, 255, 255, 0.50);
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .line {
+    /* height: 1px; */
+    height: 0.1049317943336831vh;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.box-information .vehicle-info .detail {
+    /* height: 57px; */
+    height: 5.981112277019937vh;
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    font-family: 'Kanit';
+    /* font-size: 13px; */
+    font-size: clamp(6.5px, 0.677vw, 13px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.75;
+}
+
+.box-information .vehicle-info .linetop {
+    /* width: 268px;
+    height: 1px; */
+    width: 13.958333333333334vw;
+    height: 0.1049317943336831vh;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 0px;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .vehicle-info .linebottom {
+    /* width: 268px;
+    height: 1px; */
+    width: 13.958333333333334vw;
+    height: 0.1049317943336831vh;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 0px;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .vehicle-info .box-price-color {
+    display: flex;
+    padding: 16px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.box-information .vehicle-info .box-price-color .price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+}
+
+.box-information .vehicle-info .box-price-color .price .text1 {
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 16px; */
+    font-size: clamp(8px, 0.833vw, 16px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .box-price-color .price .text2 {
+    align-self: stretch;
+    overflow: hidden;
+    color: #1EC3FE;
+    text-overflow: ellipsis;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 24px; */
+    font-size: clamp(12px, 1.15vw, 24px);
+
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .box-price-color .color {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.box-information .vehicle-info .box-price-color .color .list-color1,
+.box-information .vehicle-info .box-price-color .color .list-color2 {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    align-self: stretch;
+}
+
+
+.box-information .vehicle-info .box-price-color .color .list-color1 .color1 {
+    /* width: 20px;
+    height: 20px; */
+    width: 1.0416666666666667vw;
+    height: 2.0986358866736623vh;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #101A27;
+    box-shadow: 0 0 0 2px #000 inset;
+    cursor: pointer;
+}
+
+.box-information .vehicle-info .box-price-color .color .list-color1 .color1.active {
+    border: 1px solid rgba(255, 255, 255, 1.0);
+}
+
+.box-information .vehicle-info .box-price-color .color .list-color2 .color2 {
+    /* width: 20px;
+    height: 20px; */
+    width: 1.0416666666666667vw;
+    height: 2.0986358866736623vh;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: #101A27;
+    box-shadow: 0 0 0 2px #000 inset;
+    cursor: pointer;
+}
+
+.box-information .vehicle-info .box-price-color .color .list-color2 .color2.active {
+    border: 1px solid rgba(255, 255, 255, 1.0);
+}
+
+.box-information .vehicle-info .money-bank-me {
+    display: flex;
+    /* height: 18px; */
+    height: 1.888772298006296vh;
+    align-items: center;
+    gap: 12px;
+}
+
+.box-information .vehicle-info .money-bank-me .cash,
+.box-information .vehicle-info .money-bank-me .bank {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.box-information .vehicle-info .money-bank-me .cash .text1,
+.box-information .vehicle-info .money-bank-me .bank .text1 {
+    overflow: hidden;
+    color: #FFF;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    opacity: 0.5;
+}
+
+.box-information .vehicle-info .money-bank-me .cash .text2,
+.box-information .vehicle-info .money-bank-me .bank .text2 {
+    overflow: hidden;
+    color: #FFF;
+    text-align: right;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .vehicle-info .money-bank-me .line {
+    /* width: 1px; */
+    width: 0.052083333333333336vw;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+
+.box-information .box-btn {
+    position: relative;
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.box-information .box-btn .lineleft {
+    /* width: 1px;
+    height: 52px; */
+    width: 0.052083333333333336vw;
+    height: 5.456453305351522vh;
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    left: 0px;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .box-btn .lineright {
+    /* width: 1px;
+    height: 52px; */
+    width: 0.052083333333333336vw;
+    height: 5.456453305351522vh;
+    position: absolute;
+    right: 0px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-information .box-btn .view-testdrive {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.box-information .box-btn .view-testdrive .box {
+    display: flex;
+    /* height: 36px; */
+    height: 3.777544596012592vh;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.box-information .box-btn .view-testdrive .box:hover {
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.08) 100%), rgba(21, 21, 21, 0.90);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.box-information .box-btn .view-testdrive .box .text {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.box-information .box-btn .btn-buycar {
+    display: flex;
+    /* height: 48px; */
+    height: 5.036726128016789vh;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid rgba(30, 195, 254, 0.08);
+    background: linear-gradient(0deg, rgba(30, 195, 254, 0.08) 0%, rgba(30, 195, 254, 0.08) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.box-information .box-btn .btn-buycar .text {
+    color: #1EC3FE;
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+
+/* -------------- */
+.popup-buycar {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    display: flex;
+    /* width: 460px; */
+    width: 23.958333333333332vw;
+    padding: 6px;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 12px;
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.popup-buycar .inner {
+    position: relative;
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.90);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.popup-buycar .inner .information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+}
+
+.popup-buycar .inner .information .head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.popup-buycar .inner .information .head .icon {
+    position: relative;
+    /* width: 50px;
+    height: 50px; */
+    width: 2.6041666666666665vw;
+    height: 5.246589716684155vh;
+}
+
+.popup-buycar .inner .information .head .icon .img {
+    width: 2.6041666666666665vw;
+    height: 5.246589716684155vh;
+}
+
+.popup-buycar .inner .information .head .boxtext {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+}
+
+.popup-buycar .inner .information .head .boxtext .text1 {
+    align-self: stretch;
+    color: #1EC3FE;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 17px; */
+    font-size: clamp(8.5px, 0.885vw, 17px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .head .boxtext .text2 {
+    align-self: stretch;
+    color: rgba(255, 255, 255, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 10px; */
+    font-size: clamp(5px, 0.520vw, 10px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .btn-payment {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    align-self: stretch;
+}
+
+.popup-buycar .inner .information .btn-payment .btn {
+    display: flex;
+    /* height: 32px; */
+    height: 3.3578174186778593vh;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.popup-buycar .inner .linetop {
+    /* width: 200px;
+    height: 2px; */
+    width: 10.416666666666666vw;
+    height: 0.2098635886673662vh;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: -1px;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.popup-buycar .inner .information .btn-payment .btn .text {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .btn-payment .btn .text.active {
+    color: #1EC3FE;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .pricesum {
+    position: relative;
+    display: flex;
+    /* height: 68px; */
+    height: 7.135362014690451vh;
+    padding: 8px 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.popup-buycar .inner .information .pricesum .line1 {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.10416666666666667vw;
+    height: 2.5183630640083945vh;
+    position: absolute;
+    transform: translateY(-50%);
+    right: -1px;
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.popup-buycar .inner .information .pricesum .line2 {
+    /* width: 2px;
+    height: 24px; */
+    width: 0.10416666666666667vw;
+    height: 2.5183630640083945vh;
+    position: absolute;
+    left: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.popup-buycar .inner .information .pricesum .text {
+    color: #1EC3FE;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 24px; */
+    font-size: clamp(12px, 1.25vw, 24px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .lineend {
+    /* height: 1px; */
+    height: 0.1049317943336831vh;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.popup-buycar .inner .information .btn-cancel-con {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.popup-buycar .inner .information .btn-cancel-con .btn {
+    display: flex;
+    /* width: 128px;
+    height: 36px; */
+    width: 6.666666666666667vw;
+    height: 3.777544596012592vh;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.popup-buycar .inner .information .btn-cancel-con .btn .text {
+    color: #FFF;
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.popup-buycar .inner .information .btn-cancel-con .btn2 {
+    display: flex;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-radius: 4px;
+    border: 1px solid rgba(30, 195, 254, 0.08);
+    background: linear-gradient(0deg, rgba(30, 195, 254, 0.08) 0%, rgba(30, 195, 254, 0.08) 100%), rgba(21, 21, 21, 0.60);
+    cursor: pointer;
+}
+
+.popup-buycar .inner .information .btn-cancel-con .btn2 .text {
+    color: #1EC3FE;
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 12px; */
+    font-size: clamp(6px, 0.625vw, 12px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+
+/* test drive */
+
+.box-testdrive {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 102px;
+    display: flex;
+    /* width: 188px; */
+    width: 9.791666666666666vw;
+    padding: 6px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-radius: 8px;
+    background: rgba(21, 21, 21, 0.60);
+}
+
+.box-testdrive .inner {
+    position: relative;
+    display: flex;
+    padding: 4px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(21, 21, 21, 0.60);
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.25);
+}
+
+.box-testdrive .inner .lineright {
+    /* width: 2px;
+    height: 12px; */
+    width: 0.10416666666666667vw;
+    height: 1.2591815320041972vh;
+    position: absolute;
+    right: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-testdrive .inner .lineleft {
+    /* width: 2px;
+    height: 12px; */
+    width: 0.10416666666666667vw;
+    height: 1.2591815320041972vh;
+    position: absolute;
+    left: -1px;
+    transform: translateY(-50%);
+    top: 50%;
+    border-radius: 4px;
+    background: #1EC3FE;
+    box-shadow: 0 0 8px 0 rgba(30, 195, 254, 0.50);
+}
+
+.box-testdrive .inner .information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.box-testdrive .inner .information .text1 {
+    align-self: stretch;
+    color: rgba(255, 255, 255, 0.50);
+    text-align: center;
+    font-family: 'Kanit';
+    /* font-size: 14px; */
+    font-size: clamp(7px, 0.7291666666666666vw, 14px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.box-testdrive .inner .information .text2 {
+    align-self: stretch;
+    overflow: hidden;
+    color: #FFF;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: 'Kanit';
+    font-size: clamp(5px, 0.5208333333333334vw, 10px);
+    /* font-size: 10px; */
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.box-testdrive .inner .information .text3 {
+    align-self: stretch;
+    color: #1EC3FE;
+    text-align: center;
+    text-shadow: 0 0 20px rgba(10, 174, 251, 0.50);
+    font-family: 'Kanit';
+    /* font-size: 15px; */
+    font-size: clamp(7.5px, 0.78125vw, 15px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
