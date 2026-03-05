@@ -14,7 +14,7 @@ local function vehCfg(model)
     end
     return nil
 end
-ESX.RegisterServerCallback('Tarn_vehicleshop:isPlateTaken', function(source, cb, plate)
+ESX.RegisterServerCallback('val-vehicleshop:isPlateTaken', function(source, cb, plate)
     local row = MySQL.single('SELECT plate FROM owned_vehicles WHERE plate = ?', { tostring(plate) })
     cb(row ~= nil)
 end)
@@ -33,7 +33,7 @@ local function removeMoney(xPlayer, payment, amount)
         xPlayer.removeAccountMoney('bank', amount)
     end
 end
-ESX.RegisterServerCallback('Tarn_vehicleshop:buyVehicle', function(source, cb, model, price, payment)
+ESX.RegisterServerCallback('val-vehicleshop:buyVehicle', function(source, cb, model, price, payment)
     local xPlayer = ESX.GetPlayerFromId(source)
     if not xPlayer then cb(false) return end
     local cfg = vehCfg(model)
@@ -57,8 +57,8 @@ end)
 RegisterNetEvent(Tarn..':ExitTest')
 AddEventHandler(Tarn..':ExitTest', function()
 end)
-RegisterNetEvent('Tarn_vehicleshop:setVehicleOwned')
-AddEventHandler('Tarn_vehicleshop:setVehicleOwned', function(vehicleProps, job)
+RegisterNetEvent('val-vehicleshop:setVehicleOwned')
+AddEventHandler('val-vehicleshop:setVehicleOwned', function(vehicleProps, job)
     local src = source
     local xPlayer = ESX.GetPlayerFromId(src)
     if not xPlayer then return end
