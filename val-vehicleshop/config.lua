@@ -456,3 +456,10 @@ Config['vehicles'] = {
 	
 	
 } 
+
+Config["DiscordWebhook"] = {
+	Enable = false,
+	BuyVehicle = '', -- ใส่ Discord Webhook URL
+	BotName = 'Val VehicleShop',
+	AvatarURL = ''
+}

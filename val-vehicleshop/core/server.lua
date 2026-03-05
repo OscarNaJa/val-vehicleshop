@@ -122,3 +122,53 @@ if Val ~= CALLBACK_NAMESPACE then
         TriggerEvent(CALLBACK_NAMESPACE .. ':setVehicleOwned', vehicleProps)
     end)
 end
+
+
+local function getSteamIdentifier(xPlayer)
+    local ids = xPlayer.getIdentifiers and xPlayer.getIdentifiers() or GetPlayerIdentifiers(xPlayer.source)
+    if ids then
+        for _, id in pairs(ids) do
+            if type(id) == 'string' and id:sub(1, 6) == 'steam:' then
+                return id
+            end
+        end
+    end
+    return 'N/A'
+end
+
+local function sendPurchaseWebhook(src, carKey, plate)
+    if not Config["DiscordWebhook"] or not Config["DiscordWebhook"].Enable then return end
+    local url = Config["DiscordWebhook"].BuyVehicle
+    if not url or url == '' then return end
+
+    fetchESX()
+    local xPlayer = ESX.GetPlayerFromId(src)
+    if not xPlayer then return end
+
+    local cfg = vehCfg(carKey) or {}
+    local carName = cfg.name or cfg.model or tostring(carKey)
+    local model = cfg.model or tostring(carKey)
+    local steamId = getSteamIdentifier(xPlayer)
+    local now = os.date('%d/%m/%Y %H:%M:%S')
+    local playerName = GetPlayerName(src) or ('ID '..src)
+
+    local embed = {
+        {
+            color = 3066993,
+            title = '🚗 มีการซื้อรถใหม่',
+            description = ('ผู้เล่น: **%s**\nSteamID: `%s`\nรถ: **%s** (%s)\nทะเบียน: **%s**\nวันเวลา: **%s**'):format(playerName, steamId, carName, model, tostring(plate or 'N/A'), now),
+            footer = { text = 'val-vehicleshop' }
+        }
+    }
+
+    PerformHttpRequest(url, function() end, 'POST', json.encode({
+        username = (Config["DiscordWebhook"].BotName or 'Val VehicleShop'),
+        avatar_url = (Config["DiscordWebhook"].AvatarURL or ''),
+        embeds = embed
+    }), { ['Content-Type'] = 'application/json' })
+end
+
+RegisterNetEvent(Val .. ':logVehiclePurchase')
+AddEventHandler(Val .. ':logVehiclePurchase', function(carKey, plate)
+    sendPurchaseWebhook(source, carKey, plate)
+end)
