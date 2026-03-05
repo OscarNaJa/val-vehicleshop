@@ -28,21 +28,35 @@ end)
 
 local function Notify(msg, level)
 	level = level or 'info'
-	if ConfigNotify and ConfigNotify.Provider == 'mythic' then
-		local t = (ConfigNotify.Types and ConfigNotify.Types[level]) or level
-		pcall(function()
-			exports[ConfigNotify.MythicResource or 'mythic_notify']:DoHudText(t, msg)
+	local provider = (ConfigNotify and ConfigNotify.Provider) or 'ssr'
+
+	if provider == 'ssr' then
+		local alertType = (ConfigNotify and ConfigNotify.Types and ConfigNotify.Types[level]) or level
+		local ok = pcall(function()
+			exports[(ConfigNotify and ConfigNotify.SsrResource) or 'ssr_notify']:sendAlert({
+				title = 'ร้านรถ',
+				msg = msg,
+				type = alertType
+			})
 		end)
-	elseif ESX and ESX.ShowNotification then
+		if ok then return end
+	elseif provider == 'mythic' then
+		local t = (ConfigNotify and ConfigNotify.Types and ConfigNotify.Types[level]) or level
+		local ok = pcall(function()
+			exports[(ConfigNotify and ConfigNotify.MythicResource) or 'mythic_notify']:DoHudText(t, msg)
+		end)
+		if ok then return end
+	elseif provider == 'esx' and ESX and ESX.ShowNotification then
 		ESX.ShowNotification(msg)
-	else
-		print(('[val-vehicleshop] %s'):format(msg))
+		return
 	end
+
+	print(('[val-vehicleshop] %s'):format(msg))
 end
 
 
 local function notifyError()
-    exports['ssr_notify']:sendAlert({
+    exports[(ConfigNotify and ConfigNotify.SsrResource) or 'ssr_notify']:sendAlert({
         title = 'ร้านรถ',
         msg = 'คุณมีเงินในธนาคารไม่เพียงพอ',
         type = 'error'

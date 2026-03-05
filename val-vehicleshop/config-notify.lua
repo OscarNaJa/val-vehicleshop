@@ -1,5 +1,6 @@
 ConfigNotify = {
-    Provider = 'mythic', -- mythic | esx
+    Provider = 'ssr', -- ssr | mythic | esx
+    SsrResource = 'ssr_notify',
     MythicResource = 'mythic_notify',
     Types = {
         success = 'success',
