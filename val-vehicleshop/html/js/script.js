@@ -1,4 +1,5 @@
-const RESOURCE_NAME = (typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'val-vehicleshop');
+var RESOURCE_NAME = window.RESOURCE_NAME || (typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'val-vehicleshop');
+window.RESOURCE_NAME = RESOURCE_NAME;
 
 choosemodelcar = null
 choosepayment = null
