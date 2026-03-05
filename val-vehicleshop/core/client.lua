@@ -1,18 +1,18 @@
 
 ESX						= nil
 
-Tarn = GetCurrentResourceName()
-TarnDev = {}
-TarnDev.indexshop = nil
+Val = GetCurrentResourceName()
+ValDev = {}
+ValDev.indexshop = nil
 
-TarnDev.IsInShopMenu = false
+ValDev.IsInShopMenu = false
 
-TarnDev.Categories = {}
-TarnDev.Vehicles = {}
-TarnDev.LastVehicles = {}
+ValDev.Categories = {}
+ValDev.Vehicles = {}
+ValDev.LastVehicles = {}
 
-TarnDev.openfocus = false
-TarnDev.testcarme = false
+ValDev.openfocus = false
+ValDev.testcarme = false
 
 cam = nil
 local num = 0
@@ -38,13 +38,13 @@ end)
 
 CreateThread(function()
     for k, v in pairs(Config["Category"]) do
-		table.insert(TarnDev.Categories, {name = v.index, label = v.label})
+		table.insert(ValDev.Categories, {name = v.index, label = v.label})
 	end
 	for k,v in pairs(Config["vehicles"]) do
 		for cat,rat in pairs(Config["Category"]) do
 			if Config["vehicles"][k]["category"] == rat.index then
 				
-				table.insert(TarnDev.Vehicles, {name = v.name, model = v.model, price =v.price, category = v.category,kg = v.kg,grade = v.grade,typecar = v.typecar,class = GetClassNameCar(v.model)})
+				table.insert(ValDev.Vehicles, {name = v.name, model = v.model, price =v.price, category = v.category,kg = v.kg,grade = v.grade,typecar = v.typecar,class = GetClassNameCar(v.model)})
 			end
 		end
 	end
@@ -64,7 +64,7 @@ CreateThread(function()
 			end
 			if distance <= 2 then 
 				sleeploop = false
-				TarnDev.indexshop = k
+				ValDev.indexshop = k
 				if IsControlJustReleased(0, 38) then 
 					OpenShopMenu(v.shop,k)
 				end
@@ -78,7 +78,7 @@ end)
 
 
 function OpenShopMenu(shop,indexshop)
-	TarnDev.IsInShopMenu = true
+	ValDev.IsInShopMenu = true
 	ExecuteCommand('hud')
 	ExecuteCommand('closeminimap')
 	ExecuteCommand('closehudspeed')
@@ -88,16 +88,16 @@ function OpenShopMenu(shop,indexshop)
 	SetEntityVisible(playerPed, false)
 	local config = Config['ZONE_SHOP'][indexshop]
 	pcall(function()
-        exports["Tarn_report"]:PlayerBypassTPM()
+        exports["Val_report"]:PlayerBypassTPM()
     end)
 	SetEntityCoords(playerPed, config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z)
 	local vehiclesByCategory = {}
-	for i=1, #TarnDev.Categories, 1 do
-		vehiclesByCategory[TarnDev.Categories[i].name] = {}
+	for i=1, #ValDev.Categories, 1 do
+		vehiclesByCategory[ValDev.Categories[i].name] = {}
 	end
-	for i=1, #TarnDev.Vehicles, 1 do
-		if IsModelInCdimage(GetHashKey(TarnDev.Vehicles[i].model)) then
-			table.insert(vehiclesByCategory[TarnDev.Vehicles[i].category], TarnDev.Vehicles[i])
+	for i=1, #ValDev.Vehicles, 1 do
+		if IsModelInCdimage(GetHashKey(ValDev.Vehicles[i].model)) then
+			table.insert(vehiclesByCategory[ValDev.Vehicles[i].category], ValDev.Vehicles[i])
 		end
 	end	
 	local category,vehiclebysell = GetCategory(vehiclesByCategory)
@@ -113,19 +113,19 @@ function OpenShopMenu(shop,indexshop)
 	})
 	SetNuiFocus(true, true)
 	SetNuiFocusKeepInput(false)
-	TarnDev.openfocus = true
+	ValDev.openfocus = true
 end
 
 -- RegisterKeyMapping('openfocus', 'openfocus', 'keyboard', 'H')
 -- RegisterCommand('openfocus', function(source,arg)
--- 	if TarnDev.IsInShopMenu then 
--- 		if not TarnDev.openfocus then 
--- 			TarnDev.openfocus = true
+-- 	if ValDev.IsInShopMenu then 
+-- 		if not ValDev.openfocus then 
+-- 			ValDev.openfocus = true
 -- 			Wait(500)
 -- 			SetNuiFocus(true, true)
 -- 			SetNuiFocusKeepInput(false)
 -- 		else
--- 			TarnDev.openfocus = false
+-- 			ValDev.openfocus = false
 -- 			Wait(500)
 -- 			SetNuiFocus(true, true)
 -- 			SetNuiFocusKeepInput(false)
@@ -139,14 +139,14 @@ RegisterCommand('dbv', function()
 end)
 
 RegisterNUICallback('openfocus', function()
-	if TarnDev.IsInShopMenu then 
-		-- if not TarnDev.openfocus then 
-		-- 	TarnDev.openfocus = true
+	if ValDev.IsInShopMenu then 
+		-- if not ValDev.openfocus then 
+		-- 	ValDev.openfocus = true
 		-- 	Wait(500)
 		-- 	SetNuiFocus(true, true)
 		-- 	SetNuiFocusKeepInput(false)
 		-- else
-		-- 	TarnDev.openfocus = false
+		-- 	ValDev.openfocus = false
 		-- 	Wait(500)
 		-- 	SetNuiFocus(true, true)
 		-- 	SetNuiFocusKeepInput(false)
@@ -167,23 +167,23 @@ end)
 
 
 RegisterNUICallback('testcar', function(data)
-	if not TarnDev.testcarme then
+	if not ValDev.testcarme then
 		if cam then
 			DestroyCam(cam, false)
 			RenderScriptCams(false, false, 0, true, true)
 			cam = nil
 			num = 0
 		end 
-		TriggerServerEvent(Tarn..':Vehicle:Test', data.carname)
+		TriggerServerEvent(Val..':Vehicle:Test', data.carname)
 	end
 end)
 
-RegisterNetEvent(Tarn..':TestCar:Client')
-AddEventHandler(Tarn..':TestCar:Client', function(car)
-	if not TarnDev.testcarme then
-		local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+RegisterNetEvent(Val..':TestCar:Client')
+AddEventHandler(Val..':TestCar:Client', function(car)
+	if not ValDev.testcarme then
+		local config = Config['ZONE_SHOP'][ValDev.indexshop]
 		local playerPed = PlayerPedId()
-		TarnDev.IsInShopMenu = false
+		ValDev.IsInShopMenu = false
 		ExecuteCommand('hud')
 		ExecuteCommand('closeminimap')
 		ExecuteCommand('closehudspeed')
@@ -193,7 +193,7 @@ AddEventHandler(Tarn..':TestCar:Client', function(car)
 			SetVehicleNumberPlateText(vehicle, 'PLAY')
 			SetNuiFocus(false, false)
 			SetNuiFocusKeepInput(false)
-			TarnDev.openfocus = false
+			ValDev.openfocus = false
 			SendNUIMessage({
 				closeui = true
 			})
@@ -210,24 +210,24 @@ AddEventHandler(Tarn..':TestCar:Client', function(car)
 end)
 
 function TestCarCheck()
-	TarnDev.testcarme = true
-	while TarnDev.testcarme do 
+	ValDev.testcarme = true
+	while ValDev.testcarme do 
 		Citizen.Wait(1000)
 		if not IsPedInAnyVehicle(PlayerPedId(), false) then
 			local current = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 			ESX.Game.DeleteVehicle(current)
 			Wait(500)
-			TriggerServerEvent(Tarn..':ExitTest')
+			TriggerServerEvent(Val..':ExitTest')
 			SendNUIMessage({
 				closetime = true
 			})
-			local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+			local config = Config['ZONE_SHOP'][ValDev.indexshop]
 			pcall(function()
-        exports["Tarn_report"]:PlayerBypassTPM()
+        exports["Val_report"]:PlayerBypassTPM()
     end)
 			SetEntityCoords(PlayerPedId(), config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z + 1.0)
 			Wait(1500)
-			TarnDev.testcarme = false
+			ValDev.testcarme = false
 		end
 	end
 end
@@ -236,24 +236,24 @@ RegisterNUICallback('timeouttest', function()
 	local current = GetPlayersLastVehicle(GetPlayerPed(-1), true)
 	ESX.Game.DeleteVehicle(current)
 	Wait(500)
-	TriggerServerEvent(Tarn..':ExitTest')
+	TriggerServerEvent(Val..':ExitTest')
 	SendNUIMessage({
 		closetime = true
 	})
-	local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+	local config = Config['ZONE_SHOP'][ValDev.indexshop]
 	pcall(function()
-        exports["Tarn_report"]:PlayerBypassTPM()
+        exports["Val_report"]:PlayerBypassTPM()
     end)
 	SetEntityCoords(PlayerPedId(), config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z + 1.0)
 	Wait(1500)
-	TarnDev.testcarme = false
+	ValDev.testcarme = false
 end)
 
 function CheckTestCar()
-	return TarnDev.testcarme
+	return ValDev.testcarme
 end
 RegisterCommand('ls', function()
-	if TarnDev.testcarme then 
+	if ValDev.testcarme then 
 		exports.mechanic_car:MenuMechanic()
 	end
 end)
@@ -264,9 +264,9 @@ RegisterNUICallback('buycar', function(data)
 
 	ESX.TriggerServerCallback('val-vehicleshop:buyVehicle', function (hasEnoughMoney)
 		if hasEnoughMoney then
-			TarnDev.IsInShopMenu = false
+			ValDev.IsInShopMenu = false
 			DeleteShopInsideVehicles()
-			local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+			local config = Config['ZONE_SHOP'][ValDev.indexshop]
 			ESX.Game.SpawnVehicle(Config["vehicles"][data.carname].model, config.ShopOutside.Pos, config.ShopOutside.Pos.w, function (vehicle)
 				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 				local newPlate = GeneratePlate()
@@ -294,7 +294,7 @@ RegisterNUICallback('buycar', function(data)
 				})
 				SetNuiFocus(false, false)
 				SetNuiFocusKeepInput(false)
-				TarnDev.openfocus = false
+				ValDev.openfocus = false
 				local job = Config["vehicles"][data.carname].category
 				if job == 'ambulance' or job == 'police' or job == 'council' then
 					TriggerServerEvent('val-vehicleshop:setVehicleOwned', vehicleProps,job)
@@ -303,10 +303,10 @@ RegisterNUICallback('buycar', function(data)
 				end
 
 				local sendToDiscord = '' .. GetPlayerName(PlayerId()) .. ' ซื้อรถ ' .. Config["vehicles"][data.carname].model .. ' ทะเบียน ' .. vehicleProps.plate .. ' ราคา ' .. ESX.Math.GroupDigits(Config["vehicles"][data.carname].price) ..'$'
-				TriggerServerEvent('Tarn_serverlogs:sendToDiscord', 'BuyVehicle', sendToDiscord, GetPlayerServerId(PlayerId()), '^2')
+				TriggerServerEvent('Val_serverlogs:sendToDiscord', 'BuyVehicle', sendToDiscord, GetPlayerServerId(PlayerId()), '^2')
 				if Config["vehicles"][data.carname].price > 650000 then 
 					local sendToDiscord2 = '' .. GetPlayerName(PlayerId()) .. ' ซื้อรถ ' .. Config["vehicles"][data.carname].model .. ' ทะเบียน ' .. vehicleProps.plate .. ' ราคา ' .. ESX.Math.GroupDigits(Config["vehicles"][data.carname].price) ..'$'
-					TriggerServerEvent('Tarn_serverlogs:sendToDiscord', 'over_buycar', sendToDiscord2, GetPlayerServerId(PlayerId()), '^2')
+					TriggerServerEvent('Val_serverlogs:sendToDiscord', 'over_buycar', sendToDiscord2, GetPlayerServerId(PlayerId()), '^2')
 				end
 				ExecuteCommand('hud')
 				ExecuteCommand('closeminimap')
@@ -328,13 +328,13 @@ RegisterNUICallback('buycar', function(data)
 end)
 
 RegisterNUICallback('choosecar', function(data)
-	local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+	local config = Config['ZONE_SHOP'][ValDev.indexshop]
 	local playerPed   = PlayerPedId()
 	DeleteShopInsideVehicles()
 	WaitForVehicleToLoad(data.model)
 
 	ESX.Game.SpawnLocalVehicle(data.model, config.ShopInside.Pos, config.ShopInside.Pos.w, function (vehicle)
-		table.insert(TarnDev.LastVehicles, vehicle)
+		table.insert(ValDev.LastVehicles, vehicle)
 		TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 		FreezeEntityPosition(vehicle, true)
 		SetModelAsNoLongerNeeded(data.model)
@@ -368,7 +368,7 @@ RegisterNUICallback('choosecolor2', function(data)
 end)
 
 RegisterNUICallback('quit', function()
-	if TarnDev.IsInShopMenu then
+	if ValDev.IsInShopMenu then
 		ExecuteCommand('hud')
 		ExecuteCommand('closeminimap')
 		ExecuteCommand('closehudspeed')
@@ -377,15 +377,15 @@ RegisterNUICallback('quit', function()
 		local playerPed = PlayerPedId()
 		FreezeEntityPosition(playerPed, false)
 		SetEntityVisible(playerPed, true)
-		local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+		local config = Config['ZONE_SHOP'][ValDev.indexshop]
 		pcall(function()
-        exports["Tarn_report"]:PlayerBypassTPM()
+        exports["Val_report"]:PlayerBypassTPM()
     end)
 		SetEntityCoords(playerPed, config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z)
 		SetNuiFocus(false, false)
 		SetNuiFocusKeepInput(false)
-		TarnDev.IsInShopMenu = false
-		TarnDev.openfocus = false
+		ValDev.IsInShopMenu = false
+		ValDev.openfocus = false
 		if cam then
 			DestroyCam(cam, false)
 			RenderScriptCams(false, false, 0, true, true)
@@ -397,20 +397,20 @@ RegisterNUICallback('quit', function()
 end)
 
 function CheckInShopCar()
-	return TarnDev.IsInShopMenu
+	return ValDev.IsInShopMenu
 end
 exports("CheckInShopCar", CheckInShopCar)
 
 AddEventHandler('onResourceStop', function(resource)
 	if resource == GetCurrentResourceName() then
-		if TarnDev.IsInShopMenu then
+		if ValDev.IsInShopMenu then
 			DeleteShopInsideVehicles()
 			local playerPed = PlayerPedId()
 			FreezeEntityPosition(playerPed, false)
 			SetEntityVisible(playerPed, true)
-			local config = Config['ZONE_SHOP'][TarnDev.indexshop]
+			local config = Config['ZONE_SHOP'][ValDev.indexshop]
 			pcall(function()
-        exports["Tarn_report"]:PlayerBypassTPM()
+        exports["Val_report"]:PlayerBypassTPM()
     end)
 			SetEntityCoords(playerPed, config.ShopEnterShop.Pos.x, config.ShopEnterShop.Pos.y, config.ShopEnterShop.Pos.z)
 		end

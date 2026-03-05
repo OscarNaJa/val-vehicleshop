@@ -1,14 +1,14 @@
 function DeleteShopInsideVehicles()
-	while #TarnDev.LastVehicles > 0 do
-		local vehicle = TarnDev.LastVehicles[1]
+	while #ValDev.LastVehicles > 0 do
+		local vehicle = ValDev.LastVehicles[1]
 		ESX.Game.DeleteVehicle(vehicle)
-		table.remove(TarnDev.LastVehicles, 1)
+		table.remove(ValDev.LastVehicles, 1)
 	end
 end
 
 function DisableKeyInShop()
 	CreateThread(function()
-		while TarnDev.IsInShopMenu do
+		while ValDev.IsInShopMenu do
 			Wait(1)
 			DisableControlAction(0, 75,  true) 
 			DisableControlAction(27, 75, true)

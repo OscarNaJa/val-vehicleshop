@@ -1,5 +1,5 @@
 ESX = nil
-Tarn = GetCurrentResourceName()
+Val = GetCurrentResourceName()
 CreateThread(function()
     while ESX == nil do
         TriggerEvent(Config["BaseServer"]["server_shared_obj"], function(obj) ESX = obj end)
@@ -49,13 +49,13 @@ ESX.RegisterServerCallback('val-vehicleshop:buyVehicle', function(source, cb, mo
     removeMoney(xPlayer, payment, amount)
     cb(true)
 end)
-RegisterNetEvent(Tarn..':Vehicle:Test')
-AddEventHandler(Tarn..':Vehicle:Test', function(carname)
+RegisterNetEvent(Val..':Vehicle:Test')
+AddEventHandler(Val..':Vehicle:Test', function(carname)
     local src = source
-    TriggerClientEvent(Tarn..':TestCar:Client', src, carname)
+    TriggerClientEvent(Val..':TestCar:Client', src, carname)
 end)
-RegisterNetEvent(Tarn..':ExitTest')
-AddEventHandler(Tarn..':ExitTest', function()
+RegisterNetEvent(Val..':ExitTest')
+AddEventHandler(Val..':ExitTest', function()
 end)
 RegisterNetEvent('val-vehicleshop:setVehicleOwned')
 AddEventHandler('val-vehicleshop:setVehicleOwned', function(vehicleProps, job)
