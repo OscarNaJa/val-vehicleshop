@@ -40,6 +40,15 @@ local function Notify(msg, level)
 	end
 end
 
+
+local function notifyError()
+    exports['ssr_notify']:sendAlert({
+        title = 'ร้านรถ',
+        msg = 'คุณมีเงินในธนาคารไม่เพียงพอ',
+        type = 'error'
+    })
+end
+
 local function ExitShopUI()
 	if not ValDev.IsInShopMenu then return end
 	ExecuteCommand('hud')
@@ -365,7 +374,7 @@ RegisterNUICallback('buycar', function(data)
 			end
 		else
 			if data.payment == 'bank' then
-				Notify('เงินในธนาคารไม่พอ ระบบปิดหน้าร้านให้แล้ว', 'error')
+				notifyError()
 				ExitShopUI()
 			else
 				Notify('คุณไม่มีเงิน', 'error')
