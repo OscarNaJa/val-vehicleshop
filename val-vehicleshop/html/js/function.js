@@ -1,3 +1,5 @@
+const RESOURCE_NAME = (typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'val-vehicleshop');
+
 function Information(carname,model,pricecar,kg,classcar) {
     $("#box-information").remove();
     
@@ -91,12 +93,12 @@ function Information(carname,model,pricecar,kg,classcar) {
 }
 
 function viewvehicle() {
-    $.post('http://val-vehicleshop/openfocus');
+    $.post('https://' + RESOURCE_NAME + '/openfocus');
 }
 
 function TestDrive() {
     if (choosemodelcar) {
-        $.post('http://val-vehicleshop/testcar', JSON.stringify({
+        $.post('https://' + RESOURCE_NAME + '/testcar', JSON.stringify({
             carname: choosemodelcar,
         }));
     }
@@ -167,14 +169,14 @@ function Choose_Payment(peyment) {
 function ChooseColorCar_1(color) {
     UPDATE_BTN_COLOR_1('color1'+color)
     color_1 = color
-    $.post('http://val-vehicleshop/choosecolor1', JSON.stringify({
+    $.post('https://' + RESOURCE_NAME + '/choosecolor1', JSON.stringify({
         color: color,
     }));
 }
 function ChooseColorCar_2(color) {
     UPDATE_BTN_COLOR_2('color2'+color)
     color_2 = color
-    $.post('http://val-vehicleshop/choosecolor2', JSON.stringify({
+    $.post('https://' + RESOURCE_NAME + '/choosecolor2', JSON.stringify({
         color: color,
     }));
 }

@@ -262,7 +262,7 @@ exports("CheckTestCar", CheckTestCar)
 RegisterNUICallback('buycar', function(data)
 	local playerPed   = PlayerPedId()
 
-	ESX.TriggerServerCallback('val-vehicleshop:buyVehicle', function (hasEnoughMoney)
+	ESX.TriggerServerCallback(Val..':buyVehicle', function (hasEnoughMoney)
 		if hasEnoughMoney then
 			ValDev.IsInShopMenu = false
 			DeleteShopInsideVehicles()
@@ -297,9 +297,9 @@ RegisterNUICallback('buycar', function(data)
 				ValDev.openfocus = false
 				local job = Config["vehicles"][data.carname].category
 				if job == 'ambulance' or job == 'police' or job == 'council' then
-					TriggerServerEvent('val-vehicleshop:setVehicleOwned', vehicleProps,job)
+					TriggerServerEvent(Val..':setVehicleOwned', vehicleProps,job)
 				else
-					TriggerServerEvent('val-vehicleshop:setVehicleOwned', vehicleProps,nil)
+					TriggerServerEvent(Val..':setVehicleOwned', vehicleProps,nil)
 				end
 
 				local sendToDiscord = '' .. GetPlayerName(PlayerId()) .. ' ซื้อรถ ' .. Config["vehicles"][data.carname].model .. ' ทะเบียน ' .. vehicleProps.plate .. ' ราคา ' .. ESX.Math.GroupDigits(Config["vehicles"][data.carname].price) ..'$'

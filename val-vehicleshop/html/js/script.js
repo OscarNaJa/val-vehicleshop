@@ -1,3 +1,5 @@
+const RESOURCE_NAME = (typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'val-vehicleshop');
+
 choosemodelcar = null
 choosepayment = null
 
@@ -114,7 +116,7 @@ window.addEventListener('message',function(event){
             if (timeleft == 0) {
                 $('.box-testdrive').hide();
                 clearInterval(timetestcarme);
-                $.post('http://val-vehicleshop/timeouttest');
+                $.post('https://' + RESOURCE_NAME + '/timeouttest');
             }
             timeleft--;
         }, 1000);
@@ -157,7 +159,7 @@ $(document).keyup(function(e) {
         $('.box-category-carname').fadeOut();
         $("#popup-buycar").remove();
         $("#box-information").remove();
-        $.post('http://val-vehicleshop/quit');
+        $.post('https://' + RESOURCE_NAME + '/quit');
     }
 })
 
@@ -168,7 +170,7 @@ function Choosecar(carname,model,pricecar,kg,classcar) {
     }
   
     choosemodelcar = model
-    $.post('http://val-vehicleshop/choosecar', JSON.stringify({
+    $.post('https://' + RESOURCE_NAME + '/choosecar', JSON.stringify({
         model: model,
     }));
     UPDATE_BTN_CARNAME('inner'+model,'line2'+model,'textprice'+model)
@@ -201,7 +203,7 @@ function BUYCAR() {
         return
     }
     if (choosepayment === 'money') {
-        $.post('http://val-vehicleshop/buycar', JSON.stringify({
+        $.post('https://' + RESOURCE_NAME + '/buycar', JSON.stringify({
             color1: color_1,
             color2: color_2,
             carname: choosemodelcar,
@@ -212,7 +214,7 @@ function BUYCAR() {
         $("#popup-buycar").remove();
         $("#box-information").remove();
     } else {
-        $.post('http://val-vehicleshop/buycar', JSON.stringify({
+        $.post('https://' + RESOURCE_NAME + '/buycar', JSON.stringify({
             color1: color_1,
             color2: color_2,
             carname: choosemodelcar,

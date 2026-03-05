@@ -21,7 +21,7 @@ end
 
 function IsPlateTaken(plate)
 	local p = promise.new()
-	ESX.TriggerServerCallback('val-vehicleshop:isPlateTaken', function(isPlateTaken)
+	ESX.TriggerServerCallback(Val..':isPlateTaken', function(isPlateTaken)
 		p:resolve(isPlateTaken)
 	end, plate)
 
