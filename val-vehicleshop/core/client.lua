@@ -271,7 +271,7 @@ RegisterNUICallback('buycar', function(data)
 				TaskWarpPedIntoVehicle(playerPed, vehicle, -1)
 				local newPlate = GeneratePlate()
 				if data.color1 ~= nil then 
-					local colorcar = Config['ColorList'][1][data.color]
+					local colorcar = Config['ColorList'][1][data.color1]
 					if colorcar then
 						SetVehicleCustomPrimaryColour(vehicle, colorcar.r, colorcar.g, colorcar.b)
 					else
@@ -357,14 +357,18 @@ end)
 RegisterNUICallback('choosecolor1', function(data)
 	local vehicle       = GetVehiclePedIsIn(PlayerPedId(), false)
 	local color = Config['ColorList'][1][data.color]
-	SetVehicleCustomPrimaryColour(vehicle, color.r, color.g, color.b)
+	if color then
+		SetVehicleCustomPrimaryColour(vehicle, color.r, color.g, color.b)
+	end
 	
 end)
 
 RegisterNUICallback('choosecolor2', function(data)
 	local vehicle       = GetVehiclePedIsIn(PlayerPedId(), false)
 	local color2 = Config['ColorList'][2][data.color]
-	SetVehicleCustomSecondaryColour(vehicle, color2.r, color2.g, color2.b)
+	if color2 then
+		SetVehicleCustomSecondaryColour(vehicle, color2.r, color2.g, color2.b)
+	end
 end)
 
 RegisterNUICallback('quit', function()
