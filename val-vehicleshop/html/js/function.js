@@ -1,6 +1,11 @@
 var RESOURCE_NAME = window.RESOURCE_NAME || (typeof GetParentResourceName === 'function' ? GetParentResourceName() : 'val-vehicleshop');
 window.RESOURCE_NAME = RESOURCE_NAME;
 
+if (typeof choosepayment === 'undefined') choosepayment = null;
+if (typeof choosemodelcar === 'undefined') choosemodelcar = null;
+if (typeof color_1 === 'undefined') color_1 = null;
+if (typeof color_2 === 'undefined') color_2 = null;
+
 function Information(carname,model,pricecar,kg,classcar) {
     $("#box-information").remove();
     
@@ -161,10 +166,9 @@ function Cancel_Buy_Vehicle() {
     $("#popup-buycar").remove();
 }
 
-function Choose_Payment(peyment) {
-    choosepayment = peyment
-    console.log(peyment)
-    UPDATE_BTN_PAYMENT('payment'+peyment)
+function Choose_Payment(payment) {
+    choosepayment = payment
+    UPDATE_BTN_PAYMENT('payment'+payment)
 }
 
 function ChooseColorCar_1(color) {
